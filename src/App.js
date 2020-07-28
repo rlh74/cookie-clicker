@@ -27,6 +27,13 @@ class App extends Component {
     });
   }
 
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({
+      username: event.target.value
+    })
+  }
+
   editUsername = () => {
     this.setState({
       usernameIsEditable: true,
@@ -47,6 +54,7 @@ class App extends Component {
           <p>
             Username:
             {/* Username should go here */}
+            {this.state.username}
             {/* The next block of code is conditional rendering.
             Look at the documentation https://reactjs.org/docs/conditional-rendering.html
             if this is new to you. */}
@@ -68,7 +76,7 @@ class App extends Component {
 
             */}
             {this.state.usernameIsEditable ?
-              <button onClick={this.saveUsername}>Save Username</button> :
+              <><input type="text" onChange={this.handleChange}></input><button onClick={this.saveUsername}>Save Username</button></> :
               <button onClick={this.editUsername}>Edit Username</button>
             }
           </p>
