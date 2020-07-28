@@ -11,7 +11,7 @@ const getCookie = (cookieName) => {
 class App extends Component {
   state = {
     clickCount: getCookie('count') || 0,
-    username: '',
+    username: getCookie('username') || '',
     usernameIsEditable: false,
   }
 
@@ -44,6 +44,9 @@ class App extends Component {
     this.setState({
       usernameIsEditable: false,
     });
+    const username = this.state.username;
+    document.cookie = `username=${username}`;
+
   }
 
   render() {
